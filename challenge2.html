@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Quote</title>
+</head>
+<style>
+    body{
+        text-align: center;
+        margin-top: 100px;
+    }
+    div{
+        display: inline-block;
+        background-color: black;
+    }
+    button{
+        display: inline-block;
+        width: 110px;
+        height: 40px;
+        margin: 150px; ;
+        background-color: red;
+        border: none;
+        border-radius: 5px;
+    }
+    h3{
+        color: yellow;
+        margin-top: 80px;
+    }
+    h4{
+        color: blue;
+        margin-left: 200px;
+        margin-top: 80px;
+    }
+</style>
+<body>
+    <div>
+        <h3 id="quote">Result</h3>
+        <h4 id="writer">writer</h4>
+        <button type="button" id="button">Click Me</button>
+    </div>
+
+    <script>
+        let quoteLine = [
+            {
+                Lines : "Success Is Not Final,Failure Is not Fatal,It is the courage to continue that counts",
+                writer : "Winston Churchil"
+            },
+            {
+                Lines : "It is always seems impossible until it's done",
+                writer : "Nelson Mandela"
+            },
+            {
+                Lines : "Sometimes We were tested not to show our weakness, But to discover our strength",
+                writer : "Manas Behera"
+            },
+            {
+                Lines : "Don't Stop Until Your Proud",
+                writer : "Manas Behera"
+            }
+        ]
+        console.log(quoteLine);
+
+        let click = document.getElementById("button");
+        let quote = document.getElementById("quote");
+        let writer = document.getElementById("writer");
+        function getRandomQuote(min,max) {
+            let step1 = max - min + 1;
+            let step2 = Math.random() * step1;
+            let result = Math.floor(step2) + min;
+
+            return result;
+        }
+        click.addEventListener('click', () => {
+            let index = getRandomQuote(0,quoteLine.length - 1);
+             document.getElementById("quote").innerHTML = quoteLine[index].Lines;
+             document.getElementById("writer").innerHTML = quoteLine[index].writer
+        })
+
+
+    </script>
+</body>
+</html>
